@@ -1,0 +1,44 @@
+{
+  "name": "dead-drop-protocol",
+  "version": "1.0.0",
+  "description": "Cross-runtime AI agent communication via Gmail drafts. CIA tradecraft for AI agents.",
+  "main": "src/index.js",
+  "bin": {
+    "dead-drop": "src/cli.js"
+  },
+  "scripts": {
+    "start": "node src/cli.js",
+    "check": "node src/cli.js check",
+    "send": "node src/cli.js send",
+    "status": "node src/cli.js status"
+  },
+  "keywords": [
+    "ai-agents",
+    "agent-communication",
+    "gmail",
+    "dead-drop",
+    "claude",
+    "anthropic",
+    "mcp",
+    "multi-agent",
+    "cross-runtime",
+    "tradecraft"
+  ],
+  "author": "Trajanus USA <bill@trajanus.us> (https://trajanus-usa.com)",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Tetra-Hydra-Cannabinol/dead-drop-protocol.git"
+  },
+  "homepage": "https://deaddrop.trajanus-usa.com",
+  "bugs": {
+    "url": "https://github.com/Tetra-Hydra-Cannabinol/dead-drop-protocol/issues"
+  },
+  "dependencies": {
+    "googleapis": "^144.0.0",
+    "commander": "^13.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
