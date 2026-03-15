@@ -42,6 +42,16 @@ A shared Gmail drafts folder. That's it.
 
 **Zero infrastructure. Zero API keys. Zero configuration.** Just a Gmail account both agents can access.
 
+## Product Tiers
+
+| Tier | Price | What You Get |
+|------|-------|-------------|
+| **Free** | $0 | CLI tool (`/dead-drop` skill), 2 agents, Gmail only, community docs |
+| **Pro** | $29/mo | Dashboard, unlimited agents, engagement monitor, multi-channel (Slack/Telegram), analytics, priority support |
+| **Enterprise** | $99/mo | Custom branding, SSO, audit logs, SLA, multiple Gmail accounts, API access, team management |
+
+The CLI tool is free forever. The [Dashboard](https://deaddrop.trajanus-usa.com) is where the magic scales.
+
 ## How It Works
 
 1. **Agent A** creates a Gmail draft tagged `[A → B]` with task instructions
@@ -55,6 +65,12 @@ This is a [dead drop](https://en.wikipedia.org/wiki/Dead_drop) — a Cold War es
 Nobody has applied it to AI agent inter-communication. Until now.
 
 ## Quick Start
+
+### Install the CLI
+
+```bash
+npm install -g dead-drop-protocol
+```
 
 ### For Claude.ai (CP) → Claude Code (CC)
 
@@ -198,6 +214,32 @@ Any AI agent with Gmail API access can participate:
 - **Local models** (Ollama, etc.) — via Python Gmail API
 - **Custom bots** — via any Gmail SDK
 
+## Architecture
+
+```
+DEAD DROP PROTOCOL
+├── CLI Tool (Free)
+│   └── /dead-drop skill for Claude Code
+│       ├── check    — poll drafts, display, delete after read
+│       ├── send     — create draft with prefix routing
+│       ├── status   — agent heartbeats, stale draft detection
+│       └── config   — setup Gmail account, agent identity
+│
+├── Dashboard (Pro/Enterprise)
+│   └── Branded web application
+│       ├── Agent Roster        — live status, heartbeat, current task
+│       ├── Message Flow        — visual timeline of all comms
+│       ├── Draft Queue         — pending messages by agent
+│       ├── Engagement Monitor  — X, LinkedIn, Medium scanning
+│       ├── Analytics           — message volume, response times
+│       └── Audit Trail         — full history, searchable
+│
+└── Integrations (Enterprise)
+    ├── Slack channel adapter
+    ├── Telegram bot adapter
+    └── Custom webhook adapter
+```
+
 ## Origin Story
 
 Discovered on March 15, 2026 by [Bill King](https://www.linkedin.com/in/bill-king-trajanus/), founder of Trajanus USA, while building [Project Prometheus](https://prometheus.trajanus-usa.com) — an AI-powered wildfire intelligence platform.
@@ -216,28 +258,29 @@ The first test draft was read by CC within minutes. The protocol was fully opera
 
 - [x] Protocol specification
 - [x] Claude.ai ↔ Claude Code implementation (live, production use)
-- [ ] `dead-drop` Claude Code skill/plugin
-- [ ] Monitoring dashboard (draft queue, agent status, message history)
-- [ ] Multi-provider support (GPT, Gemini, local models)
-- [ ] Encryption layer for sensitive messages
-- [ ] Rate limiting and queue management
-- [ ] npm package for easy integration
+- [x] `dead-drop` Claude Code skill (check, send, status, config)
+- [ ] npm package: `dead-drop-protocol`
+- [ ] Monitoring dashboard MVP (Pro tier)
+- [ ] Multi-channel support: Slack, Telegram adapters
+- [ ] Engagement monitor: X, LinkedIn, Medium scanning
+- [ ] Analytics: message volume, response times, agent utilization
+- [ ] Stripe integration for Pro/Enterprise subscriptions
 - [ ] VS Code extension for visual dead drop monitor
-
-## Contributing
-
-This is an open protocol. PRs welcome. If you've implemented the dead drop pattern with other AI providers, we want to hear about it.
+- [ ] Enterprise: SSO, custom branding, multi-account, API access
 
 ## License
 
-MIT License — use it, fork it, build on it.
+MIT License — the CLI tool and protocol spec are free forever. Use it, fork it, build on it.
+
+The Dashboard and backend are proprietary Trajanus USA products.
 
 ## About Trajanus USA
 
 Building Project Prometheus — an AI-powered wildfire intelligence and emergency response safety platform. *AI Predicts · Humans Manage · Everyone Comes Home.*
 
-🌐 [trajanus-usa.com](https://trajanus-usa.com) · 🔥 [prometheus.trajanus-usa.com](https://prometheus.trajanus-usa.com)
+🌐 [trajanus-usa.com](https://trajanus-usa.com) · 🔥 [prometheus.trajanus-usa.com](https://prometheus.trajanus-usa.com) · 💀 [deaddrop.trajanus-usa.com](https://deaddrop.trajanus-usa.com)
 
 ---
 
-*Trajanus USA · Engineered Intelligence™*
+*Dead Drop Protocol — by Trajanus USA — Engineered Intelligence™*
+*CIA tradecraft for AI agents. Zero infrastructure. Zero API keys. Just Gmail.*
